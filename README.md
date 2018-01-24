@@ -1,12 +1,12 @@
 # mcmder
-Yet Another Rapper of Nysol M-Command in Python.
+Yet Another Wrapper of Nysol M-Command in Python.
 
 
 ## Description
 
-This is unofficail rapper of nysol M-command in Python.
+High-speed processing (CSV) of large-scale structured data tables.
 
-To know about Nysol and M-Command, see the official documents for more information.
+To know more about Nysol and M-Command, see the official documents.
 
 
 ### What is Nysol and M-Command?
@@ -20,13 +20,12 @@ To know about Nysol and M-Command, see the official documents for more informati
 
 
 ## Features
-- Create M-Command easily in python.
-- Execute M-Command without putting memory.
-- Use pandas DataFrame as input and output.
+- Create M-Command easily in python with method chaining. 
+- Execute M-Command without putting large data on memory.(csv to csv)
+- Optionally use pandas DataFrame as input and output.
 
 
 ## Requirement
-- Python 3.4+
 - [nysol/mcmd](https://github.com/nysol/mcmd#installation)
 - [pandas](https://pandas.pydata.org/)
 
@@ -58,7 +57,7 @@ z,3
 ```
 
 ```
->>>mc.dataframe
+>>> mc.dataframe
    a  c
 0  x  4
 1  y  9
@@ -79,3 +78,12 @@ z,3
 1  0.100167 -1.824585  0.051611
 2  0.890079  1.440997 -0.298709
 ```
+
+## License
+
+[MIT](https://github.com/yhay81/mcmder/blob/master/LICENSE)
+
+
+## Author
+
+[Yusuke Hayashi](https://github.com/yahy81)
