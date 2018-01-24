@@ -3,64 +3,10 @@ import os
 import io
 import copy
 import subprocess
-import signal
 import pandas
 
-
-class McmderError(Exception):
-    """Parents of Errors in this module."""
-    pass
-
-
-class McmdError(McmderError):
-    """Raised when run() is called with check=True and the process.
-
-    returns a non-zero exit status.
-    Attributes:
-      cmd, returncode, stderr, output
-    """
-
-    def __init__(self, returncode, cmd, output=None, stderr=None):
-        self.returncode = returncode
-        self.cmd = cmd
-        self.output = output
-        self.stderr = stderr
-
-    def __str__(self):
-        if self.returncode and self.returncode < 0:
-            try:
-                return "Command '%s' died with %r.\n %s" % (
-                    self.cmd, signal.Signals(-self.returncode), self.stderr)
-            except ValueError:
-                return "Command '%s' died with unknown signal %d.\n %s" % (
-                    self.cmd, -self.returncode, self.stderr)
-        else:
-            return "Command '%s' returned non-zero exit status %d.\n %s" % (
-                self.cmd, self.returncode, self.stderr)
-
-
-def df2bytes(dataframe):
-    """Convert pandas.DataFrame to bytes csv.
-
-    :param pandas.DataFrame dataframe: dataframe to convert
-    :return: bytes of csv
-    :rtype: bytes
-    """
-    return '\n'.join(
-        [','.join(dataframe), ] +
-        [','.join(map(str, row)) for row in dataframe.values]
-    ).encode()
-
-
-def to_cstr(x):
-    if isinstance(x, str):
-        return x
-    elif isinstance(x, list):
-        return ','.join(x)
-    elif isinstance(x, dict):
-        return ','.join(k + ':' + v for k, v in x.items())
-    else:
-        return str(x)
+from .errors import McmderError, McmdError
+from .utils import df2bytes, to_cstr
 
 
 class Mcmder(object):
