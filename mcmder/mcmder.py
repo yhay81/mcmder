@@ -12,7 +12,7 @@ from .utils import df2bytes, to_cstr
 class Mcmder(object):
     """Create/Contain M-Command and contain the result as pandas.DataFrame."""
 
-    def __init__(self, input_data=None, _mcmd_args=None):
+    def __init__(self, input_data=None, _mcmd_args=None, header=True):
         """Check if input data is file path or pandas.df.
 
         :param str or pandas.DataFrame input_data:
@@ -26,6 +26,7 @@ class Mcmder(object):
             raise ValueError('Input file does not exist.')
         self.input_data = input_data
         self._mcmd_args = _mcmd_args
+        self.header = header
         self._dataframe = None
 
     @property
@@ -56,7 +57,7 @@ class Mcmder(object):
 
     df = dataframe
 
-    def execute(self, output_file=None, stdout=False):
+    def execute(self, output_file=None, stdout=False, header=False):
         """Execute M-Command.
 
         if output_file is not None, just write into the file.
@@ -71,18 +72,20 @@ class Mcmder(object):
             args.append('|mtree o=' + output_file)
         elif output_file is not None and not stdout:
             args.append('o=' + output_file)
+        if header:
+            args.append('-nfno')
         stdin = df2bytes(self.input_data) \
             if isinstance(self.input_data, pandas.DataFrame) else None
         completed_process = subprocess.run(
             ' '.join(args), input=stdin,
             stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
-            )
+        )
         if completed_process.returncode != 0:
             raise McmdError(
                 completed_process.returncode, ' '.join(args),
                 output=completed_process.stdout,
                 stderr=completed_process.stderr
-                )
+            )
         return completed_process.stdout
 
     def mcmd(self, mcmd_name, *flags, **options):
@@ -100,14 +103,17 @@ class Mcmder(object):
                     [mcmd_name, '-' + flag], stdout=subprocess.PIPE)
                 print(completed_process.stdout)
             return self
-        if self._mcmd_args is not None:
+        if self._mcmd_args is None:
+            if isinstance(self.input_data, str):
+                next_args = [mcmd_name, 'i=' + self.input_data]
+            else:
+                next_args = [mcmd_name, ]
+            if not self.header:
+                next_args.append('-nfn')
+        else:
             next_args = copy.copy(self._mcmd_args)
             next_args.append('|')
             next_args.append(mcmd_name)
-        elif isinstance(self.input_data, str):
-            next_args = [mcmd_name, 'i='+self.input_data]
-        else:
-            next_args = [mcmd_name, ]
         for flag in flags:
             if flag is not None:
                 next_args.append('-' + flag)
