@@ -1,4 +1,3 @@
-
 def df2bytes(dataframe):
     """Convert pandas.DataFrame to bytes csv.
 
@@ -19,5 +18,7 @@ def to_cstr(x):
         return ','.join(x)
     elif isinstance(x, dict):
         return ','.join(k + ':' + v for k, v in x.items())
+    elif x is None:
+        return None
     else:
         return str(x)
