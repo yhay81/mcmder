@@ -12,7 +12,7 @@ from .utils import df2bytes, to_cstr
 class Mcmder(object):
     """Create/Contain M-Command and contain the result as pandas.DataFrame."""
 
-    def __init__(self, input_data=None, _mcmd_args=None, header=True):
+    def __init__(self, input_data=None, header=True, *, _mcmd_args=None):
         """Check if input data is file path or pandas.df.
 
         :param str or pandas.DataFrame input_data:
@@ -117,10 +117,10 @@ class Mcmder(object):
         for flag in flags:
             if flag is not None:
                 next_args.append('-' + flag)
-        for k, v in options.items():
-            if v is not None:
-                next_args.append(k + '=' + v)
-        return Mcmder(self.input_data, _mcmd_args=next_args)
+        for key, value in options.items():
+            if value is not None:
+                next_args.append(key + '=' + value)
+        return Mcmder(self.input_data, True, _mcmd_args=next_args)
 
     # Each Commands
     def msortf(self, f, del_percent=True):
