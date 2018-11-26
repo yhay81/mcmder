@@ -22,3 +22,15 @@ def to_cstr(x):
         return None
     else:
         return str(x)
+
+
+def clean_dic(local_dic):
+    del local_dic['self']
+    del local_dic['options']
+    if '_from' in local_dic:
+        local_dic['from'] = local_dic['_from']
+        del local_dic['_from']
+    cleaned_dic = {}
+    for key, value in local_dic.items():
+        cleaned_dic[key] = to_cstr(value)
+    return cleaned_dic
