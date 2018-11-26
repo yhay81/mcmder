@@ -18,10 +18,9 @@ class Mcmder(object):
         :param str or pandas.DataFrame input_data:
         :param list _mcmd_args:
         """
-        if not(input_data is None or isinstance(input_data, str) or
-               isinstance(input_data, pandas.DataFrame)):
-            raise ValueError(
-                'Input data must be str(file path) or pandas.DataFrame.')
+        if not (input_data is None or isinstance(input_data, str) or
+                isinstance(input_data, pandas.DataFrame)):
+            raise ValueError('Input data must be str(file path) or pandas.DataFrame.')
         elif isinstance(input_data, str) and not os.path.exists(input_data):
             raise ValueError('Input file does not exist.')
         self.input_data = input_data
@@ -135,8 +134,7 @@ class Mcmder(object):
     def mbest(self, s, from_=0, to=0, k=None, u=None, *options, tmpPath=None):
         return self.mcmd('mbest', *options, **clean_dic(locals()))
 
-    def mbucket(self, f, n, F=0, k=None, O=None,
-                *options, bufcount=None, tmpPath=None, precision=None):
+    def mbucket(self, f, n, F=0, k=None, O=None, *options, bufcount=None, tmpPath=None, precision=None):
         return self.mcmd('mbucket', *options, **clean_dic(locals()))
 
     def mcat(self, f, *options, tmpPath=None):
@@ -163,12 +161,10 @@ class Mcmder(object):
     def mcross(self, f, s, a=None, k=None, v=None, *options, tmpPath=None):
         return self.mcmd('mcross', *options, **clean_dic(locals()))
 
-    def m2cross(self, f, s=None, a=None, k=None, v=None,
-                *options, tmpPath=None):
+    def m2cross(self, f, s=None, a=None, k=None, v=None, *options, tmpPath=None):
         return self.mcmd('m2cross', *options, **clean_dic(locals()))
 
-    def mcsv2json(self, k=None, s=None, f=None, h=None, p=None,
-                  *options, tmpPath=None):
+    def mcsv2json(self, k=None, s=None, f=None, h=None, p=None, *options, tmpPath=None):
         return self.mcmd('mcsv2json', *options, **clean_dic(locals()))
 
     def mcsvconv(self, m, k=None, s=None, *options, tmpPath=None):
@@ -198,12 +194,10 @@ class Mcmder(object):
     def mfsort(self, f, *options, tmpPath=None):
         return self.mcmd('mfsort', *options, **clean_dic(locals()))
 
-    def mhashavg(self, f, hs=None, k=None,
-                 *options, tmpPath=None, precison=None):
+    def mhashavg(self, f, hs=None, k=None, *options, tmpPath=None, precison=None):
         return self.mcmd('mhashavg', *options, **clean_dic(locals()))
 
-    def mhashsum(self, f, hs=None, k=None, *options,
-                 tmpPath=None, precision=None):
+    def mhashsum(self, f, hs=None, k=None, *options, tmpPath=None, precision=None):
         return self.mcmd('mhashsum', *options, **clean_dic(locals()))
 
     def minput(self, x, y, len, f=None, *options):
@@ -215,8 +209,7 @@ class Mcmder(object):
     def mkeybreak(self, k, s=None, a=None, *options, tmpPath=None):
         return self.mcmd('mkeybreak', *options, **clean_dic(locals()))
 
-    def mmbucket(self, f, n, F=None, k=None, O=None, *options,
-                 bufcount=None, tmpPath=None):
+    def mmbucket(self, f, n, F=None, k=None, O=None, *options, bufcount=None, tmpPath=None):
         return self.mcmd('mmbucket', *options, **clean_dic(locals()))
 
     def mminput(self, f=None, *options, tmpPath=None):
@@ -225,38 +218,31 @@ class Mcmder(object):
     def mmseldsp(self, x, y, height=None, seldata=None, *options):
         return self.mcmd('mmseldsp', *options, **clean_dic(locals()))
 
-    def mmvavg(self, f, s=None, k=None, n=None, t=None, alpha=None, skip=None,
-               *options, tmpPath=None, precision=None):
+    def mmvavg(self, f, s=None, k=None, n=None, t=None, alpha=None, skip=None, *options, tmpPath=None, precision=None):
         return self.mcmd('mmvavg', *options, **clean_dic(locals()))
 
-    def mmvsim(self, f, c, a, s=None, k=None, t=None, skip=None,
-               *options, tmpPath=None, precision=None):
+    def mmvsim(self, f, c, a, s=None, k=None, t=None, skip=None, *options, tmpPath=None, precision=None):
         return self.mcmd('mmvsim', *options, **clean_dic(locals()))
 
-    def mmvstats(self, f, c, s=None, k=None, t=None, skip=None,
-                 *options, tmpPath=None, precision=None):
+    def mmvstats(self, f, c, s=None, k=None, t=None, skip=None, *options, tmpPath=None, precision=None):
         return self.mcmd('mmvstats', *options, **clean_dic(locals()))
 
     def mnewnumber(self, a, I=None, S=None, l=None, *options, tmpPath=None):
         return self.mcmd('mnewnumber', *options, **clean_dic(locals()))
 
-    def mnewrand(self, a, max=None, min=None, S=None, l=None,
-                 *options, tmpPath=None):
+    def mnewrand(self, a, max=None, min=None, S=None, l=None, *options, tmpPath=None):
         return self.mcmd('mnewrand', *options, **clean_dic(locals()))
 
     def mnewstr(self, a, v=None, l=None, *options, tmpPath=None):
         return self.mcmd('mnewstr', *options, **clean_dic(locals()))
 
-    def mnjoin(self, k, f=None, K=None, m=None,
-               *options, bufcount=None, tmpPath=None):
+    def mnjoin(self, k, f=None, K=None, m=None, *options, bufcount=None, tmpPath=None):
         return self.mcmd('mnjoin', *options, **clean_dic(locals()))
 
-    def mnormalize(self, c, f, k=None,
-                   *options, bufcount=None, tmpPath=None, precision=None):
+    def mnormalize(self, c, f, k=None, *options, bufcount=None, tmpPath=None, precision=None):
         return self.mcmd('mnormalize', *options, **clean_dic(locals()))
 
-    def mnrcommon(self, R, r, k=None, K=None, u=None, m=None,
-                  *options, tmpPath=None):
+    def mnrcommon(self, R, r, k=None, K=None, u=None, m=None, *options, tmpPath=None):
         return self.mcmd('mnrcommon', *options, **clean_dic(locals()))
 
     def mnrjoin(self, R, r, k=None, K=None, f=None, *options, tmpPath=None):
@@ -265,12 +251,10 @@ class Mcmder(object):
     def mnullto(self, f, v=None, O=None, *options, tmpPath=None):
         return self.mcmd('mnullto', *options, **clean_dic(locals()))
 
-    def mnumber(self, a, e=None, I=None, k=None, s=None, S=None,
-                *options, tmpPath=None):
+    def mnumber(self, a, e=None, I=None, k=None, s=None, S=None, *options, tmpPath=None):
         return self.mcmd('mnumber', *options, **clean_dic(locals()))
 
-    def mpadding(self, f, k=None, v=None, S=None, E=None,
-                 *options, tmpPath=None):
+    def mpadding(self, f, k=None, v=None, S=None, E=None, *options, tmpPath=None):
         return self.mcmd('mpadding', *options, **clean_dic(locals()))
 
     def mpaste(self, f, m=None, *options, tmpPath=None):
@@ -279,12 +263,10 @@ class Mcmder(object):
     def mproduct(self, f, m=None, *options, bufcount=None, tmpPath=None):
         return self.mcmd('mproduct', *options, **clean_dic(locals()))
 
-    def mrand(self, a, k=None, max=None, min=None, S=None,
-              *options, tmpPath=None):
+    def mrand(self, a, k=None, max=None, min=None, S=None, *options, tmpPath=None):
         return self.mcmd('mrand', *options, **clean_dic(locals()))
 
-    def mrjoin(self, r, k=None, K=None, R=None, f=None, m=None,
-               *options, tmpPath=None):
+    def mrjoin(self, r, k=None, K=None, R=None, f=None, m=None, *options, tmpPath=None):
         return self.mcmd('mrjoin', *options, **clean_dic(locals()))
 
     def msed(self, c, f, v, *options, tmpPath=None):
@@ -296,15 +278,13 @@ class Mcmder(object):
     def mseldsp(self, x, y, height=None, seldata=None, *options):
         return self.mcmd('mseldsp', *options, **clean_dic(locals()))
 
-    def mselnum(self, f, c, k=None, u=None,
-                *options, bufcount=None, tmpPath=None):
+    def mselnum(self, f, c, k=None, u=None, *options, bufcount=None, tmpPath=None):
         return self.mcmd('mcut', *options, **clean_dic(locals()))
 
     def mselrand(self, c=None, p=None, k=None, S=None, *options, tmpPath=None):
         return self.mcmd('mselrand', *options, **clean_dic(locals()))
 
-    def mselstr(self, f, v, k=None, u=None,
-                *options, bufcount=None, tmpPath=None):
+    def mselstr(self, f, v, k=None, u=None, *options, bufcount=None, tmpPath=None):
         return self.mcmd('mselstr', *options, **clean_dic(locals()))
 
     def msep(self, d, f=None, *options, tmpPath=None):
@@ -322,8 +302,7 @@ class Mcmder(object):
     def mshuffle(self, d, n=None, v=None, f=None, *options, tmpPath=None):
         return self.mcmd('mshuffle', *options, **clean_dic(locals()))
 
-    def msim(self, c, f, a=None, k=None, n=None,
-             *options, bufcount=None, tmpPath=None, precision=None):
+    def msim(self, c, f, a=None, k=None, n=None, *options, bufcount=None, tmpPath=None, precision=None):
         return self.mcmd('msim', *options, **clean_dic(locals()))
 
     def mslide(self, f, s=None, k=None, t=None, *options, tmpPath=None):
@@ -342,8 +321,7 @@ class Mcmder(object):
     def msum(self, f, k=None, *options, tmpPath=None, precision=None):
         return self.mcmd('msum', *options, **clean_dic(locals()))
 
-    def msummary(self, c, f, a=None, k=None,
-                 *options, tmpPath=None, precision=None):
+    def msummary(self, c, f, a=None, k=None, *options, tmpPath=None, precision=None):
         return self.mcmd('msummary', *options, **clean_dic(locals()))
 
     def mtee(self, *options, tmpPath=None):
@@ -355,8 +333,7 @@ class Mcmder(object):
     def mtra(self, f, s=None, k=None, delim=None, *options, tmpPath=None):
         return self.mcmd('mtra', *options, **clean_dic(locals()))
 
-    def mtrafld(self, a, f=None, delim=None, delim2=None,
-                *options, tmpPath=None):
+    def mtrafld(self, a, f=None, delim=None, delim2=None, *options, tmpPath=None):
         return self.mcmd('mtrafld', *options, **clean_dic(locals()))
 
     def mtraflg(self, a, f, delim=None, *options, tmpPath=None):

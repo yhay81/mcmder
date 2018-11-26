@@ -11,6 +11,6 @@ __title__ = 'mcmder'
 __author__ = 'Yusuke Hayashi'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2018 Yusuke Hayashi'
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 
 from .mcmder import Mcmder
