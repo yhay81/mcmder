@@ -29,6 +29,10 @@ To know more about Nysol and M-Command, see the official documents.
 - [nysol/mcmd](https://github.com/nysol/mcmd#installation)
 - [pandas](https://pandas.pydata.org/)
 
+## Install
+```
+pip install mcmder
+```
 
 ## Usage
 
